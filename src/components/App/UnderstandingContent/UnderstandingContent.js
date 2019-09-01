@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../modules/mapStoreToProps';
+import './UnderstandingContent.css'
 
 class UnderstandingContent extends Component {
 
     state = {
         understandingContent: 0,
+        disabled: true,
     }
     
     understandingHandler = () => {
@@ -18,6 +20,16 @@ class UnderstandingContent extends Component {
     updateForm = (key) => (event) => {
         this.setState({
             [key]: event.target.value
+        }, () => {
+            if(this.state.understandingContent) {
+                this.setState({
+                    disabled: false
+                })
+            } else {
+                this.setState({
+                    disabled: true
+                })
+            }
         })
     }
    
@@ -26,7 +38,8 @@ class UnderstandingContent extends Component {
             <div>
                 <h1>How well are you understanding the content?</h1>
                 <input onChange={this.updateForm('understandingContent')} type="number" placeholder="Scale of 1-5" />
-                <button onClick={this.understandingHandler}>NEXT</button>
+                <button disabled={this.state.disabled} onClick={this.understandingHandler}>NEXT</button>
+                <p>Response Required</p>
             </div>
         )
     }

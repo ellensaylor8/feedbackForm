@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../modules/mapStoreToProps';
+import './Supported.css'
 
 class Supported extends Component {
 
     state = {
         supported: 0,
+        disabled: true,
     }
     
     supportedHandler = () => {
@@ -17,6 +19,16 @@ class Supported extends Component {
     updateForm = (key) => (event) => {
         this.setState({
             [key]: event.target.value
+        }, () => {
+            if(this.state.supported) {
+                this.setState({
+                    disabled: false
+                })
+            } else {
+                this.setState({
+                    disabled: true
+                })
+            }
         })
     }
    
@@ -25,7 +37,8 @@ class Supported extends Component {
             <div>
                 <h1>How well are you being supported?</h1>
                 <input onChange={this.updateForm('supported')} type="number" placeholder="Scale of 1-5" />
-                <button onClick={this.supportedHandler}>NEXT</button>
+                <button disabled={this.state.disabled} onClick={this.supportedHandler}>NEXT</button>
+                <p>Response Required</p>
             </div>
         )
     }

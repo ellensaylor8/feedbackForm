@@ -5,7 +5,7 @@ import mapStoreToProps from '../../modules/mapStoreToProps';
 class Comments extends Component {
 
     state = {
-        comment: 0,
+        comment: '',
     }
     
     commentsHandler = () => {
@@ -24,8 +24,9 @@ class Comments extends Component {
         return (
             <div>
                 <h1>Any comments you want to leave?</h1>
-                <input onChange={this.updateForm('comment')} type="number" placeholder="Scale of 1-5" />
+                <input onChange={this.updateForm('comment')} type="text" placeholder="..." />
                 <button onClick={this.supportedHandler}>NEXT</button>
+                <p>{this.state.comment}</p>
             </div>
         )
     }
