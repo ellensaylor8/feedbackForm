@@ -37,11 +37,12 @@ router.get('/', (req, res) => {
 
 // POST feedback
 router.post('/', (req, res) => {
-    const newFeedback = req.body.github_name;
+    console.log(req.body)
+    const feelingToday = req.body.feelingToday;
     const sqlText = `INSERT INTO feedback ("feeling", "understanding", "support", "comments") 
     VALUES ($1,$2,$3,$4)`;
 
-    pool.query(sqlText, [])
+    pool.query(sqlText, [feelingToday])
         .then((result) => {
             res.sendStatus(201);
         })
