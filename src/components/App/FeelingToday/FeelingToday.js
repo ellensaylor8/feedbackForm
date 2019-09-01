@@ -10,12 +10,9 @@ state = {
 
 feelingsHandler = () => {
     const feelingRating = this.state.feelingRating
-    // const respondentId = event.target.dataset.id;
-    // const responseObject = this.props.store.feedbackReducer;
     this.props.dispatch({type: 'SET_FEELINGS', payload: feelingRating});
-  
     this.props.history.push('/understandingContent')
-
+console.log(this.props.store);
 }
 
 updateForm = (key) => (event) => {

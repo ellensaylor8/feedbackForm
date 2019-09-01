@@ -8,6 +8,7 @@ import { createStore, combineReducers } from 'redux';
 
 const initialObject = {
     feelingToday: 0,
+    understandingContent: 0,
 }
 
 const feedbackReducer = (state = initialObject, action) => {
@@ -17,9 +18,18 @@ const feedbackReducer = (state = initialObject, action) => {
             feelingToday: action.payload
         }
     }
-
+    if (action.type === "SET_UNDERSTANDING") {
+        console.log(initialObject);
+        return {
+            ...state,
+            understandingContent: action.payload
+        }
+    }
     return state;
 }
+
+
+console.log(initialObject);
 
 const store = createStore(
     combineReducers({
