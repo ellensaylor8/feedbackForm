@@ -11,7 +11,7 @@ class Supported extends Component {
     supportedHandler = () => {
         const supportedRating = this.state.supported
         this.props.dispatch({type: 'SET_SUPPORTED', payload: supportedRating});
-        // this.props.history.push('/comments')
+        this.props.history.push('/comments')
     }
     
     updateForm = (key) => (event) => {
