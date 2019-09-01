@@ -9,6 +9,7 @@ import { createStore, combineReducers } from 'redux';
 const initialObject = {
     feelingToday: 0,
     understandingContent: 0,
+    supported: 0,
 }
 
 const feedbackReducer = (state = initialObject, action) => {
@@ -23,6 +24,12 @@ const feedbackReducer = (state = initialObject, action) => {
         return {
             ...state,
             understandingContent: action.payload
+        }
+    }
+    if (action.type === "SET_SUPPORTED") {
+        return {
+            ...state,
+            supported: action.payload
         }
     }
     return state;
