@@ -12,6 +12,7 @@ class Comments extends Component {
         const comment = this.state.supported
         this.props.dispatch({type: 'SET_COMMENT', payload: comment});
         this.props.history.push('/review')
+        console.log('Comment', this.props.store)
     }
     
     updateForm = (key) => (event) => {

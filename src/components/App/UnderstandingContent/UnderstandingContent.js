@@ -14,7 +14,7 @@ class UnderstandingContent extends Component {
         const understandingRating = this.state.understandingContent
         this.props.dispatch({type: 'SET_UNDERSTANDING', payload: understandingRating});
         this.props.history.push('/supported')
-        console.log(this.props.store);
+        console.log('Understanding Content', this.props.store);
     }
     
     updateForm = (key) => (event) => {
