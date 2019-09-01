@@ -2,34 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../modules/mapStoreToProps';
 
-class Comments extends Component {
-
-    state = {
-        comment: 0,
-    }
+class Review extends Component {
     
-    commentsHandler = () => {
-        const comment = this.state.supported
-        this.props.dispatch({type: 'SET_COMMENT', payload: comment});
-        // this.props.history.push('/review')
-    }
-    
-    updateForm = (key) => (event) => {
-        this.setState({
-            [key]: event.target.value
-        })
+    submitHandler = () => {
+        
     }
    
     render() {
         return (
             <div>
-                <h1>Any comments you want to leave?</h1>
-                <input onChange={this.updateForm('comment')} type="text" placeholder="..." />
-                <button onClick={this.supportedHandler}>NEXT</button>
-                <p>{this.state.comment}</p>
+                <h1>Review Your Feedback</h1>
+                
+                <button onClick={this.submitHandler}>SUBMIT</button>
             </div>
         )
     }
 }
 
-export default connect(mapStoreToProps)(Comments);
+export default connect(mapStoreToProps)(Review);

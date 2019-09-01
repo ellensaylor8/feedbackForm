@@ -10,6 +10,7 @@ const initialObject = {
     feelingToday: 0,
     understandingContent: 0,
     supported: 0,
+    comment: '',
 }
 
 const feedbackReducer = (state = initialObject, action) => {
@@ -30,6 +31,12 @@ const feedbackReducer = (state = initialObject, action) => {
         return {
             ...state,
             supported: action.payload
+        }
+    }
+    if (action.type === "SET_COMMENT") {
+        return {
+            ...state,
+            comment: action.payload
         }
     }
     return state;

@@ -11,7 +11,7 @@ class Comments extends Component {
     commentsHandler = () => {
         const comment = this.state.supported
         this.props.dispatch({type: 'SET_COMMENT', payload: comment});
-        // this.props.history.push('/review')
+        this.props.history.push('/review')
     }
     
     updateForm = (key) => (event) => {
@@ -25,7 +25,7 @@ class Comments extends Component {
             <div>
                 <h1>Any comments you want to leave?</h1>
                 <input onChange={this.updateForm('comment')} type="text" placeholder="..." />
-                <button onClick={this.supportedHandler}>NEXT</button>
+                <button onClick={this.commentsHandler}>NEXT</button>
                 <p>{this.state.comment}</p>
             </div>
         )
