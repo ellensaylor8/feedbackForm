@@ -9,7 +9,7 @@ class Comments extends Component {
     }
     
     commentsHandler = () => {
-        const comment = this.state.supported
+        const comment = this.state.comment
         this.props.dispatch({type: 'SET_COMMENT', payload: comment});
         this.props.history.push('/review')
         console.log('Comment', this.props.store)

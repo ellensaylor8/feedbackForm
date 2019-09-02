@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../modules/mapStoreToProps';
 import './FeelingToday.css'
-import { postFeedback, getFeedback } from '../../modules/services/services';
+
 
 
 class FeelingToday extends Component {
@@ -16,13 +16,9 @@ feelingsHandler = () => {
     const feelingRating = this.state.feelingRating
     this.props.dispatch({type: 'SET_FEELINGS', payload: feelingRating});
     this.props.history.push('/understandingContent')
-    getFeedback().then((response) => {
-        console.log(response);
-    })
-    // postFeedback(this.props.store.feedbackReducer).catch((err) => {
-    //     console.log('err: ', err)
-    //         });
-console.log(this.props.store);
+    // getFeedback().then((response) => {
+    //     console.log(response);
+    // })
 }
 
 updateForm = (key) => (event) => {

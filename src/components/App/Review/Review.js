@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../modules/mapStoreToProps';
+import { postFeedback } from '../../modules/services/services';
 
 class Review extends Component {
-    
+
+    //post request to database once submit is selected
+    //up to this point everything has been stored in store
     submitHandler = () => {
-        //post request to database once submit is selected
-        //up to this point everything has been stored in store
+        postFeedback(this.props.store.feedbackReducer).catch((err) => {
+            console.log('err: ', err)
+        });
     }
-   
+
     render() {
         return (
             <div>

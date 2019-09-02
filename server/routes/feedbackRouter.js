@@ -7,18 +7,18 @@ const pool = require('../modules/pool.js');
 // });
 
 // Setup a GET route to get all the feedback from the database
-router.get('/', (req, res) => {
-    const sqlText = `SELECT * FROM feedback;`;
-    pool.query(sqlText)
-        .then((result) => {
-            console.log(`Got stuff back from the database`, result);
-            res.send(result.rows);
-        })
-        .catch((error) => {
-            console.log(`Error making database query ${sqlText}`, error);
-            res.sendStatus(500); // Good server always responds
-        })
-})
+// router.get('/', (req, res) => {
+//     const sqlText = `SELECT * FROM feedback;`;
+//     pool.query(sqlText)
+//         .then((result) => {
+//             console.log(`Got stuff back from the database`, result);
+//             res.send(result.rows);
+//         })
+//         .catch((error) => {
+//             console.log(`Error making database query ${sqlText}`, error);
+//             res.sendStatus(500); // Good server always responds
+//         })
+// })
 
 // // Update feedback for user
 // router.put('/like/:id', (req, res) => {
@@ -38,11 +38,14 @@ router.get('/', (req, res) => {
 // POST feedback
 router.post('/', (req, res) => {
     console.log(req.body)
-    const feelingToday = req.body.feelingToday;
+    const feedback = req.body;
     const sqlText = `INSERT INTO feedback ("feeling", "understanding", "support", "comments") 
     VALUES ($1,$2,$3,$4)`;
 
-    pool.query(sqlText, [feelingToday])
+    pool.query(sqlText, [feedback.feelingToday,
+        feedback.understandingContent,
+        feedback.supported,
+        feedback.comment ])
         .then((result) => {
             res.sendStatus(201);
         })
