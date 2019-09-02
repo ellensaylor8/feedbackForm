@@ -7,35 +7,34 @@ import './FeelingToday.css'
 
 class FeelingToday extends Component {
 
-state = {
-    feelingRating: 0,
-    disabled: true,
-}
+    state = {
+        feelingRating: 0,
+        disabled: true,
+    }
 
-feelingsHandler = () => {
-    const feelingRating = this.state.feelingRating
-    this.props.dispatch({type: 'SET_FEELINGS', payload: feelingRating});
-    this.props.history.push('/understandingContent')
-    // getFeedback().then((response) => {
-    //     console.log(response);
-    // })
-}
+    //captures response from updateForm and dispatches to reducer to update feelingToday property
+    feelingsHandler = () => {
+        const feelingRating = this.state.feelingRating
+        this.props.dispatch({ type: 'SET_FEELINGS', payload: feelingRating });
+        this.props.history.push('/understandingContent')
+    }
 
-updateForm = (key) => (event) => {
-    this.setState({
-        [key]: event.target.value
-    }, () => {
-        if(this.state.feelingRating) {
-            this.setState({
-                disabled: false
-            })
-        } else {
-            this.setState({
-                disabled: true
-            })
-        }
-    })
-}
+    //updates state and changes disabled attribute on button depending on whether user has entered value
+    updateForm = (key) => (event) => {
+        this.setState({
+            [key]: event.target.value
+        }, () => {
+            if (this.state.feelingRating) {
+                this.setState({
+                    disabled: false
+                })
+            } else {
+                this.setState({
+                    disabled: true
+                })
+            }
+        })
+    }
 
 
     render() {

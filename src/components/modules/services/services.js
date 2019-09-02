@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+//gets feedback from database
 const getFeedback = () => {
     return axios({
         method: 'GET',
@@ -7,6 +8,7 @@ const getFeedback = () => {
     })
 }
 
+//post entire feedback object to database once user approves responses and submits
 const postFeedback = (feedback) => {
     return axios({
         method: 'POST',

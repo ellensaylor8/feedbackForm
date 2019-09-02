@@ -7,20 +7,21 @@ class Comments extends Component {
     state = {
         comment: '',
     }
-    
+
+    //captures updates comment state and dispatches to reducer in index.js
     commentsHandler = () => {
         const comment = this.state.comment
-        this.props.dispatch({type: 'SET_COMMENT', payload: comment});
+        this.props.dispatch({ type: 'SET_COMMENT', payload: comment });
         this.props.history.push('/review')
-        console.log('Comment', this.props.store)
     }
-    
+
+    //updates comment state
     updateForm = (key) => (event) => {
         this.setState({
             [key]: event.target.value
         })
     }
-   
+
     render() {
         return (
             <div>

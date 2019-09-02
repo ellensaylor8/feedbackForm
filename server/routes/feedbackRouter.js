@@ -37,7 +37,6 @@ const pool = require('../modules/pool.js');
 
 // POST feedback
 router.post('/', (req, res) => {
-    console.log(req.body)
     const feedback = req.body;
     const sqlText = `INSERT INTO feedback ("feeling", "understanding", "support", "comments") 
     VALUES ($1,$2,$3,$4)`;

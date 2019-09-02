@@ -9,19 +9,21 @@ class Supported extends Component {
         supported: 0,
         disabled: true,
     }
-    
+
+    //captures updated state and dispatches to reducer in index.js
     supportedHandler = () => {
         const supportedRating = this.state.supported
-        this.props.dispatch({type: 'SET_SUPPORTED', payload: supportedRating});
+        this.props.dispatch({ type: 'SET_SUPPORTED', payload: supportedRating });
         this.props.history.push('/comments')
         console.log('SUPPORTED', this.props.store)
     }
-    
+
+    //updates state based on user input
     updateForm = (key) => (event) => {
         this.setState({
             [key]: event.target.value
         }, () => {
-            if(this.state.supported) {
+            if (this.state.supported) {
                 this.setState({
                     disabled: false
                 })
@@ -32,7 +34,7 @@ class Supported extends Component {
             }
         })
     }
-   
+
     render() {
         return (
             <div>

@@ -6,6 +6,8 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 
+
+//user responses updated per action type in reducer and posted to database on feedback form submittal
 const initialObject = {
     feelingToday: 0,
     understandingContent: 0,
@@ -13,6 +15,7 @@ const initialObject = {
     comment: '',
 }
 
+//accepts dispatches from each component of feedback form
 const feedbackReducer = (state = initialObject, action) => {
     if (action.type === "SET_FEELINGS") {
         return {
@@ -42,8 +45,6 @@ const feedbackReducer = (state = initialObject, action) => {
     return state;
 }
 
-
-console.log(initialObject);
 
 const store = createStore(
     combineReducers({
