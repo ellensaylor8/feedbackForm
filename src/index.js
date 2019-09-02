@@ -24,7 +24,6 @@ const feedbackReducer = (state = initialObject, action) => {
         }
     }
     if (action.type === "SET_UNDERSTANDING") {
-        console.log(initialObject);
         return {
             ...state,
             understandingContent: action.payload
