@@ -16,6 +16,10 @@ class UnderstandingContent extends Component {
         this.props.history.push('/supported')
         console.log('Understanding Content', this.props.store);
     }
+
+    goBackHandler = () => {
+        this.props.history.push('/') 
+    }
     
     updateForm = (key) => (event) => {
         this.setState({
@@ -37,6 +41,7 @@ class UnderstandingContent extends Component {
         return (
             <div>
                 <h1>How well are you understanding the content?</h1>
+                <button onClick={this.goBackHandler}>BACK</button>
                 <input onChange={this.updateForm('understandingContent')} type="number" placeholder="Scale of 1-5" />
                 <button disabled={this.state.disabled} onClick={this.understandingHandler}>NEXT</button>
                 <p>Response Required</p>

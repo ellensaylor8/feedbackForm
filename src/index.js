@@ -4,8 +4,8 @@ import './index.css';
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
-
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
 
 //user responses updated per action type in reducer and posted to database on feedback form submittal
 const initialObject = {
@@ -47,8 +47,9 @@ const feedbackReducer = (state = initialObject, action) => {
 
 const store = createStore(
     combineReducers({
-        feedbackReducer
-    })
+        feedbackReducer,
+    }),
+    applyMiddleware(logger)
 )
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

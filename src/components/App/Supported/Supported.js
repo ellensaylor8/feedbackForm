@@ -18,6 +18,10 @@ class Supported extends Component {
         console.log('SUPPORTED', this.props.store)
     }
 
+    goBackHandler = () => {
+        this.props.history.push('/understandingContent') 
+    }
+
     //updates state based on user input
     updateForm = (key) => (event) => {
         this.setState({
@@ -39,6 +43,7 @@ class Supported extends Component {
         return (
             <div>
                 <h1>How well are you being supported?</h1>
+                <button onClick={this.goBackHandler}>BACK</button>
                 <input onChange={this.updateForm('supported')} type="number" placeholder="Scale of 1-5" />
                 <button disabled={this.state.disabled} onClick={this.supportedHandler}>NEXT</button>
                 <p>Response Required</p>

@@ -15,6 +15,10 @@ class Comments extends Component {
         this.props.history.push('/review')
     }
 
+    goBackHandler = () => {
+        this.props.history.push('/supported') 
+    }
+
     //updates comment state
     updateForm = (key) => (event) => {
         this.setState({
@@ -26,6 +30,7 @@ class Comments extends Component {
         return (
             <div>
                 <h1>Any comments you want to leave?</h1>
+                <button onClick={this.goBackHandler}>BACK</button>
                 <input onChange={this.updateForm('comment')} type="text" placeholder="..." />
                 <button onClick={this.commentsHandler}>NEXT</button>
                 <p>{this.state.comment}</p>
